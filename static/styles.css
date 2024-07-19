@@ -1,0 +1,270 @@
+/* Base styles */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #ffffff; /* Light grey background */
+    height: 100%;
+}
+
+#chat-container {
+    border: 3px solid #366E99;
+    border-radius: 15px; /* Rounded corners for the chat container */
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    width: 70%;
+    max-width: 520px; /* Reduced max width */
+    height: 90vh;
+}
+
+#title-bar {
+    background-color: #366E99;
+    color: white;
+    padding: 15px; /* Slightly reduced padding */
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.2rem; /* Smaller font size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    border-top-left-radius: 12px; /* Rounded corners for the title bar */
+    border-top-right-radius: 12px;
+}
+
+/* Reverted changes for Profile Image for the Bot */
+.bot-profile-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+    background-position: center;
+    background-image: url('/static/botbuddylogo2.jpeg'); /* Ensure this path is correct */
+    display: inline-block;
+    margin-right: 10px;
+    margin-left: 10px;
+    order: -1; 
+    position: absolute; /* Position the logo absolutely relative to the #title-bar */
+    left: 10px; /* Adjust the left position to match your design */
+    top: 50%;
+    transform: translateY(-50%); /* This will vertically center the logo */
+}
+
+/* Add this to center the title */
+#title-bar div:first-child {
+    flex: 1;
+    text-align: center;
+}
+
+/* Styles for mobile */
+@media screen and (max-width: 768px) {
+    #chat-container {
+        width: 100vw; /* Full width of the viewport */
+        height: 100vh; /* Full height of the viewport */
+        margin: 0;
+    }
+
+    #title-bar {
+        font-size: 1.2rem; /* Smaller font size for mobile */
+    }
+
+    #chat-messages {
+        flex-grow: 1; /* Allow the div to grow within the flex container */
+        min-height: 0; /* Fix for scrolling issue on iOS */
+        overflow-y: auto; /* Ensure the content is scrollable */
+        -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
+    }
+
+    #message-form {
+        flex-shrink: 0; /* Prevent the form from shrinking on smaller screens */
+    }
+
+    #message-input {
+        flex-grow: 1; /* Allow the input to grow and fill available space */
+    }
+}
+
+/* Styles for desktop */
+@media screen and (min-width: 769px) {
+    #chat-container {
+        width: 80%;
+        max-width: 600px;
+        height: 90vh;
+        margin: 10vh auto; /* Center the chat container vertically and horizontally */
+    }
+
+    #title-bar {
+        font-family: 'Lato', sans-serif;
+        font-size: 1.5rem; /* Larger font size for desktop */
+    }
+
+    .bot-profile-img {
+        display: inline-block; /* Show the profile image on larger screens */
+    }
+}
+
+/* Ensure #chat-messages can scroll if content overflows */
+#chat-messages {
+    padding: 20px;
+    overflow-y: auto; /* Will always show the scrollbar */
+    background: #ffffff;
+    font-size: 1.2em;
+    display: flex;
+    flex-direction: column;
+    height: 75vh; /* Set a fixed height */
+    max-height: 75vh; /* Set a maximum height */
+    flex-grow: 1; /* Allow the div to grow within the flex container */
+    min-height: 0; /* Fix for scrolling issue on iOS */
+    -webkit-overflow-scrolling: touch; /* Improves scrolling on iOS devices */
+}
+
+/* Custom scrollbar styles */
+#chat-messages::-webkit-scrollbar {
+    width: 12px; /* Width of the scrollbar */
+}
+
+#chat-messages::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Color of the track */
+}
+
+#chat-messages::-webkit-scrollbar-thumb {
+    background: #888; /* Color of the scrollbar thumb */
+    border-radius: 6px; /* Optional: roundness of the scrollbar thumb */
+}
+
+#chat-messages::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color of the scrollbar thumb on hover */
+}
+
+.message {
+    margin-bottom: 10px;
+    padding: 15px;
+    border-radius: 8px;
+    word-wrap: break-word; /* Ensures that words can be broken and wrapped onto the next line */
+    max-width: 100%; /* Maximum width of the message bubble */
+    overflow-wrap: break-word; /* Allows the words to be broken and wrapped onto the next line */
+    hyphens: auto; /* Automatically adds hyphens where appropriate */
+    overflow: hidden; /* Ensures content does not spill out */
+    flex-shrink: 0;
+    flex-grow: 0;
+}
+
+.user-message {
+    background-color: #d0d0ff;
+    align-self: flex-end; /* Keep user messages to the right */
+    max-width: 70%;
+    margin-left: auto; /* Add this line to push user messages to the right */
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: none; /* Adjust this as needed */
+    overflow-wrap: break-word;
+    hyphens: auto;
+    overflow: hidden;
+}
+
+.gpt-message {
+    background-color: #d0d0d0;
+    align-self: flex-start; /* Keep bot messages to the left */
+    max-width: 70%;
+    margin-right: auto; /* Add this line to push bot messages to the left */
+    word-wrap: break-word;
+    display: inline-block;
+    max-width: 90%; /* Adjust this as needed */
+    overflow-wrap: break-word;
+    hyphens: auto;
+    overflow: hidden;
+}
+
+#message-form {
+    display: flex;
+    padding: 10px; /* Reduced padding */
+    background: #ffffff;
+    border-top: 1px solid #d0d0d0;
+    border-bottom-left-radius: 12px; /* Rounded corners for the message form */
+    border-bottom-right-radius: 12px;
+}
+
+#message-input {
+    flex-grow: 1;
+    padding: 10px; /* Adjusted padding */
+    border: 1px solid #d0d0d0;
+    border-radius: 10px; /* Rounded corners for the input */
+    margin-right: 10px; /* Adjusted margin */
+    font-size: 1em;
+}
+
+#send-button {
+    padding: 10px 15px; /* Padding around the button */
+    border-radius: 10%; /* Make it circular */
+    background-color: #366E99; /* Background color */
+    border: none;
+    cursor: pointer;
+    display: flex; /* Center the icon */
+    justify-content: center;
+    align-items: center;
+}
+
+.fa-paper-plane {
+    color: white; /* Icon color */
+    font-size: 16px; /* Icon size */
+}
+
+#close-chat {
+    font-family: 'Lato', sans-serif;
+    color: white;
+    font-size: 1rem; /* Reduced size */
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+}
+
+@keyframes dot-flashing {
+  0% { opacity: 1; }
+  50% { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+
+.dot-typing {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start; /* Align items to the left */
+    width: 100%; /* Ensure the container spans the full width of the message area */
+    margin-left: 0px; /* Adjust based on your layout, adds space from the left edge */
+}
+
+.dot-typing .profile-pic {
+    margin-right: 10px; /* Space between the profile pic and the dots, adjust as needed */
+}
+
+.dot-typing .dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  margin: 0 2px;
+  background-color: #888;
+  border-radius: 50%;
+  animation: dot-flashing 1s infinite linear;
+  animation-delay: 0s, 0.2s, 0.4s;
+  background-color: #57C1B7;
+}
+
+/* If you want the dots on the left side of the message for the bot */
+.gpt-message .dot-typing {
+    margin-left: 0;
+    margin-right: auto;
+}
+
+.dot-typing .dot:nth-child(1) { animation-delay: 0s; }
+.dot-typing .dot:nth-child(2) { animation-delay: 0.2s; }
+.dot-typing .dot:nth-child(3) { animation-delay: 0.4s; }
+
+.profile-pic {
+    width: 40px; /* Adjust size as needed */
+    height: 40px; /* Adjust size as needed */
+    border-radius: 50%;
+    margin-right: 10px; /* Ensure there's space between the image and dots */
+    vertical-align: middle; /* Align with the dots */
+    float: left; /* Ensure the image floats to the left of the dots */
+}

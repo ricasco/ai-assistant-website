@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Lake AI Assistant</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/dompurify@2/dist/purify.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="chat-container">
+        <div id="title-bar">
+          <div class="bot-profile-img"></div>
+          <div>BotBuddy AI Assistant</div>
+          <div id="close-chat" style="position: absolute; right: 20px; cursor: pointer;">X</div>
+        </div>
+        <div id="chat-messages">
+            <div class="message gpt-message">{{ welcome_message|safe }}</div>
+        </div>
+        <form id="message-form">
+            <input type="text" id="message-input" placeholder="Message AI Assistant" required>
+            <button type="submit" id="send-button">
+              <i class="fa fa-paper-plane" aria-hidden="true"></i> 
+            </button>
+        </form>
+    </div>
+    <script src="/static/script.js" defer></script> <!-- JavaScript file -->
+</body>
+</html>
