@@ -69,7 +69,7 @@ To set up and run the BotBuddy AI Assistant locally, follow these steps:
    Open your browser and navigate to `http://localhost:8080` to interact with the AI assistant.
 
 ## Author
-- [Ricasco](https://github.com/ricasco) - Feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/your-linkedin)
+- [Ricasco](https://github.com/ricasco) - Feel free to connect with me on [LinkedIn]([https://www.linkedin.com/in/your-linkedin](https://www.linkedin.com/in/riccardo-cascone-440085320/))
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details.
